@@ -34,3 +34,13 @@ a:hover {
 nav:hover {
     transform: scale(1.25);
 }
+
+button {
+    background-color: green;
+    color: white;
+    transition: 1s;
+}
+
+button:hover {
+    background-color: darkgray;
+}
