@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: burlywood;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    gap: 20px;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid rgb(82, 3, 150);
+    margin: 12px;
+    border-radius: 12px;
+}
+
+img {
+    max-width: 360px;
+}
+
