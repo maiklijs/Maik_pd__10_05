@@ -14,6 +14,7 @@ nav {
 }
 
 .card {
+    text-align: center;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
@@ -43,4 +44,33 @@ button {
 
 button:hover {
     background-color: darkgray;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+}
+
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-weight: 1000;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+thead {
+    background-color: aqua;
 }
