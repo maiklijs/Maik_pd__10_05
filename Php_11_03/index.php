@@ -24,12 +24,35 @@
     <?php foreach ($kursi as $kurs) { ?>
         <tr>
             <td><?php echo $kurs["nosaukums"]; ?></td>
-            <td><?php echo number_format($kurs["cena"], 2, ",", " "); ?> €</td>
+            <td><?php echo number_format($kurs["cena"], 2, ".", ' '); ?> EUR</td>
         </tr>
 <?php
      } 
 ?>
 </table>
+
+<form method="POST" action="">
+    <label for="vards">Vārds:</label><br>
+<input type="text" name="vards" id="vards" placeholder="Vārds" required><br><br>
+
+<label for="epasts">E-pasts:</label><br>
+<input type="email" name="epasts" id="epasts" placeholder="E-pasts" required><br><br>
+
+<label for="kurss">Kurss:</label><br>
+<select name="kurss" id="kursuIzvele" required>
+    <option value="" disabled selected>Izvēlies kursu</option>
+    <?php foreach($kursi as $k) { ?>
+    <option value="<?php echo $k["kurss"] ?>"><?php echo $k["nosaukums"]?></option>
+
+<?php    } ?>
+</select><br><br>
+
+<label for="skaits">Dalībnieku skaits:</label><br>
+<input type="number" name="skaits" required min="1" max="5"><br><br>
+
+</form>
+<button type="submit">Nosutīt</button>
+
     
 </body>
 </html>
