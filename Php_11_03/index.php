@@ -6,6 +6,7 @@
     <title>Kursu pieteikumu kalkulators</title>
 </head>
 <body>
+    <?php require_once __DIR__ . '/index.php';;?>
 
 <form action="">
     <label for=""></label>
