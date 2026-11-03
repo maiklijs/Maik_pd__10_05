@@ -1,6 +1,6 @@
 <?php
 
-function aprekins($cena, $skaits) {
+function aprekins(float $cena, int $skaits) {
     $starpSumma = $cena * $skaits;
 if ($skaits >= 3) {
     $atlaide = $starpSumma * 0.1;
@@ -10,6 +10,6 @@ if ($skaits >= 3) {
 
 $kopSumma = $starpSumma - $atlaide;
 
-return [$kopSumma, $starpSumma, $atlaide];
+return [$starpSumma, $atlaide, $kopSumma];
 
     }

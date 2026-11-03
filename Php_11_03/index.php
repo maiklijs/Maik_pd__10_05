@@ -3,11 +3,13 @@ $errors = [];
 $vards = "";
 $epasts = "";
 $kurss = "";
-$skaits = "";
+$skaits = 0;
 $cena = 0;
 $kursaNosaukums = "";
+$rezultats = false; 
 
-
+    require_once __DIR__ . '/data.php';
+    require_once __DIR__ . '/functions.php';
 
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -27,6 +29,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($skaits <= 0 || $skaits >= 6) {
         $errors["skaits"] = "Skaitam jābūt veselam skaitlim no 1 līdz 5";
     }
+    if (count($errors) == 0) {
+        $rezultats = true;
+}
+    if ($kurss === "") {
+    $errors["kurss"] = "Izvēlies kursu!";
+}
     //nesapratu ka ar msaiviem tas jadara/atslegam
     
 }
@@ -37,19 +45,17 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Kursu pieteikumu kalkulators</title>
 </head>
 <body>
-    <?php require_once __DIR__ . '/data.php';?>
-    <?php require_once __DIR__ . '/functions.php';?>
 
-<form action="">
-    <label for=""></label>
-</form>
+
+<h1>Kursa pieteikums</h1>
 
 <label>Kursu skaits: <?php echo count($kursi) ?></label>
 
-<table border="solid black 1px">
+<table>
     <tr>
         <th>Kurss</th>
         <th>Cena vienam dalībniekam</th>
@@ -65,6 +71,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 </table>
 
+<div class="form">
+<h2>Pieteikuma forma:</h2>
 <form method="POST" action="">
     <label for="vards">Vārds:</label><br>
 <input type="text" name="vards" id="vards" placeholder="Vārds" required value="<?=htmlspecialchars($vards, ENT_QUOTES, 'UTF-8') ?>">
@@ -72,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 <br><br>
 
 <label for="epasts">E-pasts:</label><br>
-<input type="email" name="epasts" id="epasts" placeholder="E-pasts" required value=" <?=htmlspecialchars($epasts, ENT_QUOTES, 'UTF-8')?>">
+<input type="text" name="epasts" id="epasts" placeholder="E-pasts" required value="<?=htmlspecialchars($epasts, ENT_QUOTES, 'UTF-8')?>">
 <?php echo $errors["epasts"] ?? ""; ?>
 <br><br>
 
@@ -92,14 +100,24 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <button type="submit">Nosutīt</button>
 </form>
+</div>
+<?php
+// print_r (aprekins(25.00, 3));
+[$starpsumma, $atlaide, $kopa] = aprekins($cena, $skaits);
+//veljoprojam nav ne jausmas
 
-<?php 
-
-
+// Es nesaprotu kada veida var fukciju dabut seit, man vienkarsi nav ne jausmas
 ?>
 
+<?php if ($rezultats === true) { ?>
+    <div class="rezultats">
+        <h3>Pieteikuma aprēķins:</h3>
+        <p>Vārds: <?php echo htmlspecialchars($vards); ?></p>
+        <p>E-pasts: <?php echo htmlspecialchars($epasts); ?></p>
+    </div>
+<?php
+    }?>
 
-
-    
+ <?php // print_r($errors); ?>
 </body>
 </html>
