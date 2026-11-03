@@ -4,6 +4,11 @@ $vards = "";
 $epasts = "";
 $kurss = "";
 $skaits = "";
+$cena = 0;
+$kursaNosaukums = "";
+
+
+
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     $vards = trim($_POST["vards"] ?? "");
@@ -23,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors["skaits"] = "Skaitam jābūt veselam skaitlim no 1 līdz 5";
     }
     //nesapratu ka ar msaiviem tas jadara/atslegam
+    
 }
 ?>
 
@@ -86,6 +92,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <button type="submit">Nosutīt</button>
 </form>
+
+<?php 
+
+
+?>
+
 
 
     
